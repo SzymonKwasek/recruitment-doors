@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import GlobalState from './context/GlobalState';
+import ValidationForm from './components/ValidationForm';
+import Dashboard from './components/Dashboard';
+import RequiredAuth from './components/Auth/RequiredAuth';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalState>
+      <Router>
+          <Switch>
+              <Route component={ValidationForm} exact path="/" />
+              <Route component={RequiredAuth(Dashboard)} path="/main" />
+          </Switch>
+      </Router>
+    </GlobalState>
   );
 }
 
