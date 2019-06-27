@@ -1,27 +1,40 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 import AppContext from '../context/app-context';
+import Checkbox from './utils/Checkbox';
 
 
 const ValidationForm = (props) => {
 
     const context = useContext(AppContext);
 
+    const [checked, setChecked] = useState(false);
+
+    const { t } = useTranslation();
+
+    const handleCheckboxChange = (event) => {
+        setChecked(!checked);
+    }
+
     const onSubmitHandler = (values, { setSubmitting }) => {
         console.log("Submitting");
         axios.post('https://bench-api.applover.pl/api/v1/login', values)
              .then(res => {
-                 console.log(res);
-                 setSubmitting(false);
-                 context.setAuth();
-                 props.history.push('/main');
+                console.log(res);
+                setSubmitting(false);
+                context.setAuth();
+                if (checked) {
+                    localStorage.setItem('token', 'ksdjfhskjdhjhfjfjfjshdfjkhsdfLJHDGSFjsfK4787237-sfidhGFKDIdfdhfDJBbcbcgdgdsgskdjfhskehkjsfdf');
+                }
+                props.history.push('/main');
              })
              .catch(err => {
-                 console.log(err);
-                 setSubmitting(false);
+                console.log(err);
+                setSubmitting(false);
              })
       };
     return (
@@ -41,37 +54,47 @@ const ValidationForm = (props) => {
                 props => {
                     const { values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit } = props;
                     return (
-                        <form onSubmit={handleSubmit}>
-                            <label htmlFor="email">Email</label>
-                            <input  className={errors.email && touched.email && 'error'}
-                                    name="email"
-                                    type="text"
-                                    placeholder="Enter your email"
-                                    value={values.email}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}>
-                            </input>
-                            {errors.email && touched.email && (
-                                <div className="validation-message">
-                                    {errors.email}
-                                </div>
-                            )}
-                            <label htmlFor="password">Password</label>
-                            <input  className={errors.password && touched.password && 'error'}
-                                    name="password"
-                                    type="password"
-                                    placeholder="Enter your password"
-                                    value={values.password}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}>
-                            </input>
-                            {errors.password && touched.password && (
-                                <div className="validation-message">
-                                    {errors.password}
-                                </div>
-                            )}
-                            <button type="submit" disabled={isSubmitting}> Login </button>
-                        </form>
+                        <div className="login-wrapper">
+                            <h3 className="login-header">{t("log_in")}</h3>
+                            <form  className="form-wrapper"
+                                   onSubmit={handleSubmit}>
+                                <input  className={errors.email && touched.email && 'error'}
+                                        name="email"
+                                        type="text"
+                                        placeholder="Email address"
+                                        value={values.email}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}>
+                                </input>
+                                {errors.email && touched.email && (
+                                    <div className="validation-message">
+                                        {errors.email}
+                                    </div>
+                                )}
+                                <input  className={errors.password && touched.password && 'error'}
+                                        name="password"
+                                        type="password"
+                                        placeholder="Password"
+                                        value={values.password}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}>
+                                </input>
+                                {errors.password && touched.password && (
+                                    <div className="validation-message">
+                                        {errors.password}
+                                    </div>
+                                )}
+                                <Checkbox checked={checked}
+                                          onChange={handleCheckboxChange}
+                                          id="keepLogged"
+                                          label={t("keepLoggedIn")}/>
+                                <button className="submit-button"
+                                        type="submit" 
+                                        disabled={isSubmitting}> 
+                                        {t("login")}
+                                </button>
+                            </form>
+                        </div>
                     )
                 }
             }

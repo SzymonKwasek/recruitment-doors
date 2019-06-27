@@ -1,0 +1,455 @@
+// MIXINS ------------------------------------------
+@mixin wizard-step($width, $height, $color, $top) {
+    content: "";
+    position: absolute;
+    width: $width;
+    height: $height;
+    border-radius: 100px;
+    background-color: $color;
+    top: $top;
+}
+
+@mixin flex-row-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-column-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-row-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+// MAIN --------------------------------------------
+
+html,
+body {
+    font-family: "Roboto", sans-serif;
+    color: rgba(132, 140, 147, 1);
+}
+
+button {
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+// WIZARD ------------------------------------------
+.progtrckr {
+    @include flex-row-between;
+    list-style: none;
+    width: 359px;
+    height: 83px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    margin-bottom: 20px;
+    font-weight: 500;
+
+    &::before {
+        content: "";
+        width: 260px;
+        height: 2px;
+        position: absolute;
+        background-color: #f1f9ff;
+        top: 21px;
+        left: 45px;
+    }
+
+    li {
+        @include flex-column-center;
+        font-size: 10px;
+        color: #848c93;
+        text-transform: uppercase;
+        position: relative;
+        top: 25px;
+    }
+    em {
+        font-style: normal;
+        &::before {
+            content: "Step ";
+        }
+    }
+}
+
+.progtrckr-doing::before {
+    @include wizard-step(46px, 46px, #95a3ad, -55px);
+}
+
+.progtrckr-doing::after {
+    @include wizard-step(6px, 6px, #ffffff, -35px);
+}
+
+.progtrckr-todo::before,
+.progtrckr-done::before {
+    @include wizard-step(46px, 46px, #cddbe5, -55px);
+}
+
+.progtrckr-todo::after,
+.progtrckr-done::after {
+    @include wizard-step(6px, 6px, #6991b2, -35px);
+}
+
+.creator-container {
+    @include flex-column-center;
+}
+
+.footer-buttons {
+    display: flex;
+    width: 270px;
+    justify-content: flex-start;
+    transform: translateX(300px) translateY(-30px);
+
+    button {
+        width: 126px;
+        height: 31px;
+        background-color: rgba(111, 145, 170, 1);
+        border: 2px solid rgba(111, 145, 170, 1);
+        font-size: 14px;
+        color: rgba(255, 255, 255, 1);
+        margin: 0 5px;
+
+        &#prev-button {
+            background-color: #ffffff;
+            color: #6f91aa;
+        }
+    }
+}
+
+.multi-step {
+    width: 100%;
+    @include flex-column-center;
+}
+
+// DROPDOWN ----------------------------------------
+
+.Dropdown-control {
+	width: 112px;
+	height: 32px;
+	border-radius: 3px !important;
+	border: 1px solid #909090 !important;
+	position: relative !important;
+}
+
+.Dropdown-placeholder {
+
+	font-size: 14px;
+	color: #7E7E7E;
+	font-weight: 500;
+}
+
+// NAVBAR ------------------------------------------
+.navbar {
+    @include flex-row-between;
+    height: 80px;
+    width: 100%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    margin-bottom: 20px;
+}
+
+.navbar-right {
+	@include flex-row-between;
+	margin-right: 70px;
+	width: 375px;
+}
+
+.dropdown-label {
+	font-size: 14px;
+}
+
+.logo {
+    width: 47px;
+    margin-left: 20px;
+}
+
+.organization-button {
+    width: 118px;
+    height: 32px;
+    background-color: #77779d;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+// VIEWER ------------------------------------------
+.viewer {
+    width: 590px;
+    height: 472px;
+    border: 1px solid rgba(230, 230, 230, 1);
+}
+
+// LOGIN ------------------------------------------
+.login-header {
+    font-size: 24px;
+    color: #727272;
+    font-weight: 400;
+}
+
+.login-wrapper {
+    @include flex-column-center;
+}
+
+.form-wrapper {
+    @include flex-column-center;
+
+    input {
+        width: 374px;
+        height: 48px;
+        border-radius: 6px;
+        border: 1px solid #c9c6c6;
+        font-size: 18px;
+        color: #a5a1a1;
+        padding-left: 23px;
+        outline: none;
+        margin: 17px 0 17px 0;
+
+        &.error {
+            border-color: red;
+        }
+    }
+}
+
+.validation-message {
+    color: red;
+    width: 100%;
+    margin: 0 0 20px 5px;
+    font-size: 18px;
+}
+
+.submit-button {
+    width: 397px;
+    height: 48px;
+    background-color: #1de278;
+    font-size: 18px;
+    color: #ffffff;
+    border-radius: 6px;
+}
+
+// OPTIONS ----------------------------------------
+.options-container {
+    display: flex;
+    width: 275px;
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.single-option-container {
+    margin-left: 40px;
+    width: 100%;
+}
+
+.option-header {
+    font-size: 14px;
+    color: #848c93;
+    margin: 5px 0 5px 0;
+    font-weight: 500;
+}
+
+// -----SUB----- Door TYPE
+.door-type {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.door-size {
+    width: 170px;
+}
+
+.header-modal {
+    display: flex;
+
+    .modal-button {
+        background-color: transparent;
+        width: 10px;
+        height: 10px;
+        cursor: help;
+    }
+}
+
+// -----SUB----- Door DIVISION
+.division-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.division-input {
+    height: 18px;
+    width: 21px;
+    text-align: center;
+    margin: 0 1px 0 15px;
+}
+
+.division-button {
+    height: 24px;
+    width: 24px;
+    background-color: #cddbe5;
+    color: #848c93;
+    font-size: 12px;
+    margin: 0 1px;
+}
+
+// -----SUB----- Door COLOR
+.door-color {
+    @include flex-row-between;
+}
+
+.color-wrapper {
+    @include flex-column-center;
+}
+
+.color-circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 100px;
+
+    &.black {
+        background-color: #000000;
+    }
+
+    &.gray {
+        background-color: #797474;
+    }
+
+    &.white {
+        background-color: #f4f2f2;
+    }
+}
+
+// MODAL -------------------------------------------
+
+.organization-content {
+    width: 301px;
+    height: 222px;
+    background-color: #ffffff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.popup-content {
+    border: none !important;
+    padding: 0 !important;
+    width: auto !important;
+}
+
+.modal-container {
+    @include flex-column-center;
+    width: 813px;
+    height: 432px;
+    background-color: #ffffff;
+    border: 1px solid #7998b0;
+}
+
+.modal-header {
+    font-size: 24px;
+    color: #6f91aa;
+}
+
+.modal-divider {
+    width: 694px;
+    border: 1px solid #6f91aa;
+}
+
+.type-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.type {
+    @include flex-column-center;
+}
+
+.type-name {
+    font-size: 18px;
+    color: #6f91aa;
+    margin: 15px 0 15px 0;
+}
+
+.type-image {
+    width: 187px;
+    height: 229px;
+    background-color: #d8d8d8;
+}
+
+// UTILS -------------------------------------------
+
+.divider {
+    width: 153px;
+    border: 1px solid rgba(247, 247, 247, 1);
+    margin-left: 0;
+}
+
+.input-wrapper {
+    @include flex-row-between;
+
+    input {
+        width: 40px;
+        padding-left: 4px;
+        height: 24px;
+        margin-right: 5px;
+    }
+}
+
+
+// CHECKBOX ---------------------------------------
+
+.checkbox {
+    display: none;
+}
+
+.checkbox-container {
+    margin-bottom: 30px;
+    align-self: flex-start;
+}
+
+.checkbox-replacer {
+    position: relative;
+    left: 33px;
+    top: 5px;
+    padding: 0 15px;
+    font-size: 16px;
+    color: #A5A1A1;
+    user-select: none;
+    cursor: pointer;
+}
+
+.checkbox-replacer::before {
+    content: "";
+    width: 28px;
+    height: 25px;
+    border: 1px solid #A5A1A1;
+    display: block;
+    position: absolute;
+    left: -30px;
+    top: -3px;
+}
+
+.checked.checkbox-replacer::after {
+    content: "";
+    width: 22px;
+    height: 19px;
+    background-color: #909090;
+    display: block;
+    position: absolute;
+    left: -26px;
+    top: 1px;
+    border-radius: 2px;
+}
