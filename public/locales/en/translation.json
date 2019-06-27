@@ -22,5 +22,6 @@
     "chooseDoorDivision": "Choose door division",
     "nextButtonStep": "NEXT STEP",
     "prevButtonStep": "BACK",
-    "keepLoggedIn": "Keep me logged in"
+    "keepLoggedIn": "Keep me logged in",
+    "invalidCredentials": "Invalid email or password"
 }

@@ -3,10 +3,13 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import AppContext from '../context/app-context';
 import Checkbox from './utils/Checkbox';
 
+toast.configure();
 
 const ValidationForm = (props) => {
 
@@ -33,6 +36,14 @@ const ValidationForm = (props) => {
                 props.history.push('/main');
              })
              .catch(err => {
+                toast.error(t("invalidCredentials"), {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true
+                    });
                 console.log(err);
                 setSubmitting(false);
              })

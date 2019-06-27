@@ -22,5 +22,6 @@
     "chooseDoorDivision": "Wybierz podział drzwi",
     "nextButtonStep": "DALEJ",
     "prevButtonStep": "COFNIJ",
-    "keepLoggedIn": "Zapamiętaj mnie"
+    "keepLoggedIn": "Zapamiętaj mnie",
+    "invalidCredentials": "Nieprawidłowy login lub/i hasło"
 }
