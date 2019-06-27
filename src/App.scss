@@ -455,3 +455,20 @@ button {
     top: 1px;
     border-radius: 2px;
 }
+
+// TOAST -----------------------------------------
+
+.Toastify .Toastify__toast-container {
+    width: 100%;
+    left: 0;
+    margin: 0;
+    top: 0;
+    padding: 0;
+
+    .Toastify__toast {
+        height: 80px;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+    }
+}

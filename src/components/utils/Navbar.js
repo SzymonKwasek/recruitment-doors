@@ -29,7 +29,9 @@ const Navbar = () => {
 
         axios.get('https://bench-api.applover.pl/api/v1/organization', {
                 headers: {
-                    "Authorization": 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJvcmdhbml6YXRpb25faWQiOjEsImV4cCI6MTU2MTYzOTY3MywiY3JlYXRlZF9hdCI6IjIwMTktMDYtMTMgMTI6NDc6NTMgVVRDIn0.Vgxl0OEb-1tFNmDUzyGjIydIOeUg4cCkYuVqa_tDfD0'
+                    "Authorization": "eyJhbGciOiJIUzI1NiJ9.eyJvcmdhbml6YXRpb25faWQiOjEsImV4cCI6MTU2MTYzOTY3MywiY3JlYXRlZF9hdCI6IjIwMTktMDYtMTMgMTI6NDc6NTMgVVRDIn0.Vgxl0OEb-1tFNmDUzyGjIydIOeUg4cCkYuVqa_tDfD0",
+                    "Content-Type": 'application/json',
+                    "Accept": "application/json",
                 }
             })
             .then(res => {
@@ -38,7 +40,7 @@ const Navbar = () => {
             .catch(err => {
                 console.log(err);
             })
-            
+
     }, []);
 
     

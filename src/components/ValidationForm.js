@@ -24,7 +24,6 @@ const ValidationForm = (props) => {
     }
 
     const onSubmitHandler = (values, { setSubmitting }) => {
-        console.log("Submitting");
         axios.post('https://bench-api.applover.pl/api/v1/login', values)
              .then(res => {
                 console.log(res);
@@ -38,13 +37,12 @@ const ValidationForm = (props) => {
              .catch(err => {
                 toast.error(t("invalidCredentials"), {
                     position: "top-center",
-                    autoClose: 5000,
+                    autoClose: false,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
                     draggable: true
                     });
-                console.log(err);
                 setSubmitting(false);
              })
       };
