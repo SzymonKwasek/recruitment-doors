@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Popup from 'reactjs-popup';
 import icon from '../../assets/icon.svg';
 import { useTranslation } from 'react-i18next';
 
 import Modal from '../utils/Modal';
+import AppContext from '../../context/app-context';
 
 const DoorType = () => {
 
     const { t } = useTranslation();
 
+    const context = useContext(AppContext);
+
     const [width, setWidth] = useState(120);
     const [height, setHeight] = useState(250);
 
-    const [radio, setRadio] = useState('single');
-
     const onRadioChange = event => {
-        event.target.id === 'single' ? setRadio('single') : setRadio('double');
+        event.target.id === 'single' ? context.setDoorType('single') : context.setDoorType('double');
     }
 
     const onInputChange = event => {
@@ -40,16 +41,17 @@ const DoorType = () => {
                 <div>
                     <input  type="radio" 
                             id="single"
-                            checked={radio === 'single'}
-                            value={radio} 
+                            checked={context.doorType === 'single'}
+                            value={context.doorType} 
                             name="group1"
                             onChange={onRadioChange}/>
                     <label htmlFor="single">{t("doorTypeSingleDoor")}</label>
                 </div>
                 <div>
                     <input  type="radio" 
-                            id="double" 
-                            value={radio}
+                            id="double"
+                            checked={context.doorType === 'double'}
+                            value={context.doorType}
                             name="group1"
                             onChange={onRadioChange}/>
                     <label htmlFor="double">{t("doorTypeDoubleDoor")}</label>

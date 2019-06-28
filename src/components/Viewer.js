@@ -1,9 +1,17 @@
 import React from 'react';
 
-const Viewer = props => {
+const Viewer = ({type}) => {
+    
     return (
         <div className="viewer">
-            Viewer WORKS!
+            <div className="door-viewer"> 
+
+            </div>
+            { type === 'double' && (
+                <div className="door-viewer"> 
+
+                </div>
+            )}
         </div>
     )
 }

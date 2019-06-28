@@ -188,7 +188,19 @@ button {
     width: 590px;
     height: 472px;
     border: 1px solid rgba(230, 230, 230, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.door-viewer {
+    width: 145px;
+    height: 321px;
+    background-color: rgba(90, 88, 88, 1);
+    margin: 5px 2px;
+}
+
+
 
 // LOGIN ------------------------------------------
 .login-header {
@@ -235,6 +247,11 @@ button {
     font-size: 18px;
     color: #ffffff;
     border-radius: 6px;
+
+    &:disabled {
+        background-color: #23a861;
+        cursor: progress;
+    }
 }
 
 // OPTIONS ----------------------------------------
@@ -471,4 +488,57 @@ button {
         font-family: 'Roboto', sans-serif;
         font-weight: 300;
     }
+}
+
+// PROGRESS --------------------------------------
+
+.react-sweet-progress {
+    background-color: rgba(173, 178, 181, .8);
+    position: absolute;
+    height: 100%;
+    top: 0;
+}
+
+.react-sweet-progress-line {
+    width: 40% !important;
+    background-color: transparent !important;
+    position: relative;
+
+    &::before {
+        content: "";
+        width: 102%;
+        height: 32px;
+        border: 1px solid white;
+        border-radius: 40px;
+        display: block;
+        position: absolute;
+        top: -8px;
+        left: -5px;
+    }
+
+    &::after {
+        content: "Processing...";
+        font-size: 24px;
+        color: white;
+        position: absolute;
+        display: block;
+        width: 100%;
+        text-align: center;
+        top: -120px;
+    }
+}
+
+.react-sweet-progress-line-inner {
+    height: 18px;
+    background-color: #fff !important;
+}
+
+.react-sweet-progress-symbol {
+    padding-left: 20px !important;
+    color: white !important;
+    font-weight: 400 !important;
+}
+
+.react-sweet-progress-line-inner-status-active:before {
+    background-color: #aba0a0 !important;
 }

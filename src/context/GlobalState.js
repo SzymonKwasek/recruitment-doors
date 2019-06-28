@@ -5,6 +5,7 @@ import AppContext from './app-context';
 const GlobalState = props => {
 
     const [authenticated, setAuthenticated] = useState(false);
+    const [doorType, setDoorType] = useState('single');
     
     useEffect( () => {
         const token = localStorage.getItem('token');
@@ -19,11 +20,14 @@ const GlobalState = props => {
         setAuthenticated(false);
     };
 
+
     return (
         <AppContext.Provider value={{
             authenticated: authenticated,
             setAuth: setAuth,
-            removeAuth: removeAuth
+            removeAuth: removeAuth,
+            doorType: doorType,
+            setDoorType: setDoorType
         }}>
             {props.children}
         </AppContext.Provider>

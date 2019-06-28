@@ -14,7 +14,6 @@ const Navbar = () => {
     const [dropdownValue, setDropdownValue] = useState();
     const { t, i18n } = useTranslation();
 
-
     const options = [
         {
             value: 'en', label: 'English'
