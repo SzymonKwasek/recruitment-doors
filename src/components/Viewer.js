@@ -44,14 +44,18 @@ const Viewer = ({type}) => {
             }
             
             <div className={doorContainer}>
+                {type === 'double' && (
+                    <div className="ruler-top">
+                        <Ruler  className="top-ruler"
+                                vertical={false}
+                                value={context.width*2}/>
+                    </div>
+                )}
             <Ruler  vertical={true}
                     value={context.height}/>
                 <Door items={items}/>
                 { type === 'double' && (
                     <div>
-                        <Ruler  className="top-ruler"
-                                vertical={false}
-                                value={context.width*2}/>
                         <Door items={items}/>
                     </div>
                 )}
