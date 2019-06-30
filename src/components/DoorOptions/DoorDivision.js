@@ -1,23 +1,24 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import AppContext from '../../context/app-context';
 
 const DoorType = () => {
 
     const { t } = useTranslation();
 
-    const [beams, setBeams] = useState(4);
-    const [posts, setPosts] = useState(2);
+    const context = useContext(AppContext);
 
     const onInputChange = event => {
-        event.target.name === 'beams' ? setBeams(event.target.value) : setPosts(event.target.value);
+        event.target.name === 'beams' ? context.setBeams(event.target.value) : context.setPosts(event.target.value);
     }
 
     const onInputIncrement = event => {
-        event.target.name === 'beams' ? setBeams(+beams + 1) : setPosts(+posts + 1);
+        event.target.name === 'beams' ? context.setBeams(+context.beams + 1) : context.setPosts(+context.posts + 1);
     }
 
     const onInputDecrement = event => {
-        event.target.name === 'beams' ? (beams > 0 ? setBeams(beams - 1) : setBeams(beams)) : (posts > 0 ? setPosts(posts - 1) : setPosts(posts));
+        event.target.name === 'beams' ? (context.beams > 0 ? context.setBeams(context.beams - 1) : context.setBeams(context.beams)) : (context.posts > 0 ? context.setPosts(context.posts - 1) : context.setPosts(context.posts));
     }
 
     return (
@@ -30,7 +31,7 @@ const DoorType = () => {
                     <input  className="division-input"
                             type="text"
                             name="beams"
-                            value={beams}
+                            value={context.beams}
                             onChange={onInputChange}/>
                     <button className="division-button"
                             name="beams"
@@ -47,7 +48,7 @@ const DoorType = () => {
                     <input  className="division-input"
                             type="text"
                             name="posts"
-                            value={posts}
+                            value={context.posts}
                             onChange={onInputChange}/>
                     <button className="division-button"
                             name="posts"

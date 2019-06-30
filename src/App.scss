@@ -196,11 +196,51 @@ button {
 .door-viewer {
     width: 145px;
     height: 321px;
-    background-color: rgba(90, 88, 88, 1);
+    // background-color: rgba(90, 88, 88, 1);
     margin: 5px 2px;
+    display: flex;
+    flex-direction: column;
 }
 
+@mixin borderColor($color) {
+    .beams {
+        border-color:  $color;
+    }
 
+    .posts {
+        border-color: $color;
+    }
+}
+
+.black {
+    @include borderColor(#000);
+}
+
+.gray {
+    @include borderColor(#797474);
+}
+
+.white {
+    @include borderColor(#F4F2F2);
+}
+
+.beams {
+    flex: 1 1 20px;
+    display: flex;
+    flex-direction: row;
+    border: 3.5px solid black;
+    &:not(:last-of-type) {
+        border-bottom: none;
+        .posts {
+            border-bottom: none;
+        }
+    }
+}
+.posts {
+    display: block;
+    flex: 1 1 20px;
+    border: 3.5px solid black;
+}
 
 // LOGIN ------------------------------------------
 .login-header {

@@ -16,7 +16,7 @@ const Dashboard = () => {
     ]
     return (
         <div className='creator-container'>
-            <StepZilla steps={steps}
+            <StepZilla  steps={steps}
                         showNavigation={true}
                         dontValidate={true}
                         nextButtonText={t("nextButtonStep")}

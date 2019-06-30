@@ -5,5 +5,11 @@ export default React.createContext({
     setAuth: () => {},
     removeAuth: () => {},
     doorType: '',
-    setDoorType: () => {}
+    setDoorType: () => {},
+    beams: 4,
+    setBeams: () => {},
+    posts: 2,
+    setPosts: () => {},
+    doorColor: '',
+    setDoorColor: () => {}
 });

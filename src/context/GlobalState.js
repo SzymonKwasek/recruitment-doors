@@ -6,6 +6,9 @@ const GlobalState = props => {
 
     const [authenticated, setAuthenticated] = useState(false);
     const [doorType, setDoorType] = useState('single');
+    const [beams, setBeams] = useState(4);
+    const [posts, setPosts] = useState(2);
+    const [doorColor, setDoorColor] = useState('black');
     
     useEffect( () => {
         const token = localStorage.getItem('token');
@@ -27,7 +30,13 @@ const GlobalState = props => {
             setAuth: setAuth,
             removeAuth: removeAuth,
             doorType: doorType,
-            setDoorType: setDoorType
+            setDoorType: setDoorType,
+            beams: beams,
+            setBeams: setBeams,
+            posts: posts,
+            setPosts: setPosts,
+            doorColor: doorColor,
+            setDoorColor: setDoorColor
         }}>
             {props.children}
         </AppContext.Provider>

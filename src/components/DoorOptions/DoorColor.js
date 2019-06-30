@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import AppContext from '../../context/app-context';
 
 const DoorColor = () => {
 
-    const [radio, setRadio] = useState('black');
+    const context = useContext(AppContext);
     const { t } = useTranslation();
 
     const onRadioChange = event => {
         if (event.target.id === 'black') {
-            setRadio('black') ;
+            context.setDoorColor('black') ;
         } else if (event.target.id === 'gray') {
-            setRadio('gray');
+            context.setDoorColor('gray');
         } else {
-            setRadio('white');
+            context.setDoorColor('white');
         }
     }
 
@@ -28,8 +30,8 @@ const DoorColor = () => {
                     <div>
                         <input  type="radio" 
                                 id="black" 
-                                checked={radio==='black'}
-                                value={radio}
+                                checked={context.doorColor==='black'}
+                                value={context.doorColor}
                                 name="group2"
                                 onChange={onRadioChange}/>
                         <label htmlFor="black">{t('black')}</label>
@@ -39,9 +41,10 @@ const DoorColor = () => {
                 <div className="color-wrapper">
                     <div className="color-circle gray"></div>
                     <div>
-                        <input  type="radio" 
-                                id="gray" 
-                                value={radio}
+                        <input  type="radio"
+                                id="gray"
+                                checked={context.doorColor==='gray'}
+                                value={context.doorColor}
                                 name="group2"
                                 onChange={onRadioChange}/>
                         <label htmlFor="gray">{t('gray')}</label>
@@ -51,9 +54,10 @@ const DoorColor = () => {
                 <div className="color-wrapper">
                     <div className="color-circle white"></div>
                     <div>
-                        <input  type="radio" 
-                                id="white" 
-                                value={radio}
+                        <input  type="radio"
+                                id="white"
+                                checked={context.doorColor==='white'}
+                                value={context.doorColor}
                                 name="group2"
                                 onChange={onRadioChange}/>
                         <label htmlFor="white">{t('white')}</label>
