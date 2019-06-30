@@ -34,7 +34,7 @@ const DoorColor = () => {
                                 value={context.doorColor}
                                 name="group2"
                                 onChange={onRadioChange}/>
-                        <label htmlFor="black">{t('black')}</label>
+                        <label  htmlFor="black">{t('black')}</label>
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@ const DoorColor = () => {
                                 value={context.doorColor}
                                 name="group2"
                                 onChange={onRadioChange}/>
-                        <label htmlFor="gray">{t('gray')}</label>
+                        <label  htmlFor="gray">{t('gray')}</label>
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@ const DoorColor = () => {
                                 value={context.doorColor}
                                 name="group2"
                                 onChange={onRadioChange}/>
-                        <label htmlFor="white">{t('white')}</label>
+                        <label  htmlFor="white">{t('white')}</label>
                     </div>
                 </div>
             </div>

@@ -55,7 +55,7 @@ const Viewer = ({type}) => {
                     value={context.height}/>
                 <Door items={items}/>
                 { type === 'double' && (
-                    <div>
+                    <div className="second-door">
                         <Door items={items}/>
                     </div>
                 )}

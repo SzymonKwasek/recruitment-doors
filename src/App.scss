@@ -57,6 +57,14 @@ button {
     cursor: pointer;
 }
 
+input[type="radio"] {
+    cursor: pointer;
+}
+
+label {
+    cursor: pointer;
+}
+
 // WIZARD ------------------------------------------
 .progtrckr {
     @include flex-row-between;
@@ -206,14 +214,6 @@ button {
     overflow: hidden;
 }
 
-.door-viewer {
-    width: 145px;
-    height: 321px;
-    margin: 0px 2px;
-    display: flex;
-    flex-direction: column;
-}
-
 .room-image-container {
     position: absolute;
     z-index: 1;
@@ -225,65 +225,7 @@ button {
     height: 585px;
 }
 
-@mixin borderColor($color) {
-    .beams {
-        border-color:  $color;
-    }
 
-    .posts {
-        border-color: $color;
-    }
-}
-
-.black-door {
-    @include borderColor(#000);
-}
-
-.gray-door {
-    @include borderColor(#797474);
-}
-
-.white-door {
-    @include borderColor(#F4F2F2);
-}
-
-.beams {
-    flex: 1 1 20px;
-    display: flex;
-    flex-direction: row;
-    border: 3.5px solid black;
-    &:not(:last-of-type) {
-        border-bottom: none;
-        .posts {
-            border-bottom: none;
-        }
-    }
-}
-.posts {
-    display: block;
-    flex: 1 1 20px;
-    border: 3.5px solid black;
-}
-
-.door-container {
-    display: flex;
-    z-index: 2;
-    position: relative;
-    height: 321px;
-
-    div:first-of-type div:first-of-type {
-        margin: 0;
-    }
-
-    div:last-of-type div:first-of-type {
-        margin-right: 0;
-    }
-}
-
-.door-3d-view {
-    background-image: url('./assets/park.png');
-    background-size: cover;
-}
 
 // LOGIN ------------------------------------------
 .login-header {
@@ -669,12 +611,72 @@ button {
     position: relative;
 }
 
+@mixin borderColor($color) {
+    .beams {
+        border-color:  $color;
+    }
 
+    .posts {
+        border-color: $color;
+    }
+}
+
+.black-door {
+    @include borderColor(#000);
+}
+
+.gray-door {
+    @include borderColor(#797474);
+}
+
+.white-door {
+    @include borderColor(#F4F2F2);
+}
+
+.beams {
+    flex: 1 1 20px;
+    display: flex;
+    flex-direction: row;
+    border: 3.5px solid black;
+    &:not(:last-of-type) {
+        border-bottom: none;
+        .posts {
+            border-bottom: none;
+        }
+    }
+}
+.posts {
+    display: block;
+    flex: 1 1 20px;
+    border: 3.5px solid black;
+}
+
+.door-container {
+    display: flex;
+    z-index: 2;
+    position: relative;
+    height: 321px;
+}
+
+.second-door .door-wrapper {
+    margin-left: 4px;
+}
+
+.door-3d-view {
+    background-image: url('./assets/park.png');
+    background-size: cover;
+}
+
+.door-viewer {
+    width: 145px;
+    height: 321px;
+    display: flex;
+    flex-direction: column;
+}
 
 // RULER ----------------------------
 
 .ruler-container-vertical {
-    position: relative;
     height: 98%;
 }
 
@@ -733,8 +735,6 @@ button {
         bottom: -1px;
     }
 }
-
-
 
 .dimension-display-vertical {
     @include dimension-display;
