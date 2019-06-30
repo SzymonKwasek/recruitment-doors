@@ -1,6 +1,11 @@
 import React, { useContext } from 'react';
 import AppContext from '../context/app-context';
 import classNames from 'classnames';
+import room from '../assets/room.png';
+
+import Switch from './utils/Switch';
+import Door from './Door';
+import Ruler from './utils/Ruler';
 
 const Viewer = ({type}) => {
     
@@ -9,13 +14,10 @@ const Viewer = ({type}) => {
     const items = [];
     const posts = [];
 
-    const doorClassNames = classNames({
-        'door-viewer': true,
-        'black': context.doorColor === 'black',
-        'gray': context.doorColor === 'gray',
-        'white': context.doorColor === 'white'
-    });
-
+    const doorContainer = classNames({
+        'door-container': true,
+        'door-3d-view': !context.is2d
+    })
 
     for (let i = 0; i<=context.posts; i++) {
         posts.push(
@@ -33,14 +35,28 @@ const Viewer = ({type}) => {
 
     return (
         <div className="viewer">
-            <div className={doorClassNames}> 
-                {items}
+            <Switch />
+            {!context.is2d && <div className="room-image-container">
+                <img className="room-image"   
+                     src={room} 
+                     alt="Room"></img>
             </div>
-            { type === 'double' && (
-                <div className={doorClassNames}> 
-                    {items}
-                </div>
-            )}
+            }
+            
+            <div className={doorContainer}>
+            <Ruler  vertical={true}
+                    value={context.height}/>
+                <Door items={items}/>
+                { type === 'double' && (
+                    <div>
+                        <Ruler  className="top-ruler"
+                                vertical={false}
+                                value={context.width*2}/>
+                        <Door items={items}/>
+                    </div>
+                )}
+            </div>
+            
         </div>
     )
 }

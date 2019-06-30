@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import Popup from 'reactjs-popup';
 import icon from '../../assets/icon.svg';
 import { useTranslation } from 'react-i18next';
@@ -12,15 +12,12 @@ const DoorType = () => {
 
     const context = useContext(AppContext);
 
-    const [width, setWidth] = useState(120);
-    const [height, setHeight] = useState(250);
-
     const onRadioChange = event => {
         event.target.id === 'single' ? context.setDoorType('single') : context.setDoorType('double');
     }
 
     const onInputChange = event => {
-        event.target.name === 'width' ? setWidth(event.target.value) : setHeight(event.target.value);
+        event.target.name === 'width' ? context.setWidth(event.target.value) : context.setHeight(event.target.value);
     }
 
     return (
@@ -67,7 +64,7 @@ const DoorType = () => {
                     <div>
                         <input  type="text" 
                                 name="width" 
-                                value={width}
+                                value={context.width}
                                 onChange={onInputChange}/>
                         <span>cm</span>
                     </div>
@@ -77,7 +74,7 @@ const DoorType = () => {
                     <div>
                         <input  type="text" 
                                 name="height" 
-                                value={height}
+                                value={context.height}
                                 onChange={onInputChange}/>
                         <span>cm</span>
                     </div>

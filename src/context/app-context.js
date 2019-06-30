@@ -11,5 +11,11 @@ export default React.createContext({
     posts: 2,
     setPosts: () => {},
     doorColor: '',
-    setDoorColor: () => {}
+    setDoorColor: () => {},
+    is2d: true,
+    setIs2d: () => {},
+    width: 120,
+    setWidth: () => {},
+    height: 250,
+    setHeight: () => {}
 });

@@ -9,6 +9,9 @@ const GlobalState = props => {
     const [beams, setBeams] = useState(4);
     const [posts, setPosts] = useState(2);
     const [doorColor, setDoorColor] = useState('black');
+    const [is2d, setIs2d] = useState(true);
+    const [width, setWidth] = useState(120);
+    const [height, setHeight] = useState(250);
     
     useEffect( () => {
         const token = localStorage.getItem('token');
@@ -36,7 +39,13 @@ const GlobalState = props => {
             posts: posts,
             setPosts: setPosts,
             doorColor: doorColor,
-            setDoorColor: setDoorColor
+            setDoorColor: setDoorColor,
+            is2d: is2d,
+            setIs2d: setIs2d,
+            width: width,
+            setWidth: setWidth,
+            height: height,
+            setHeight: setHeight
         }}>
             {props.children}
         </AppContext.Provider>
