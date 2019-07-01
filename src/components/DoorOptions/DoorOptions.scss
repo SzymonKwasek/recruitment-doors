@@ -1,0 +1,99 @@
+@import '../utils//Mixins.scss';
+
+// OPTIONS ----------------------------------------
+.options-container {
+    display: flex;
+    width: 275px;
+}
+
+.main-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.single-option-container {
+    margin-left: 40px;
+    width: 100%;
+}
+
+.option-header {
+    font-size: 14px;
+    color: #848c93;
+    margin: 5px 0 5px 0;
+    font-weight: 500;
+}
+
+// -----SUB----- Door TYPE
+.door-type {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.door-size {
+    width: 170px;
+}
+
+.header-modal {
+    display: flex;
+
+    .modal-button {
+        background-color: transparent;
+        width: 10px;
+        height: 10px;
+        cursor: help;
+    }
+}
+
+// -----SUB----- Door DIVISION
+.division-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.division-input {
+    height: 18px;
+    width: 21px;
+    text-align: center;
+    margin: 0 1px 0 15px;
+}
+
+.division-button {
+    height: 24px;
+    width: 24px;
+    background-color: #cddbe5;
+    color: #848c93;
+    font-size: 12px;
+    margin: 0 1px;
+}
+
+// -----SUB----- Door COLOR
+.door-color {
+    @include flex-row-between;
+}
+
+.color-wrapper {
+    @include flex-column-center;
+}
+
+.color-circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 100px;
+
+    &.black {
+        background-color: #000000;
+    }
+
+    &.gray {
+        background-color: #797474;
+    }
+
+    &.white {
+        background-color: #f4f2f2;
+    }
+}

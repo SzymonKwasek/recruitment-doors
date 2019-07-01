@@ -14,5 +14,5 @@ export default function(ComposedComponent) {
     return <ComposedComponent {...props}/>
   }
 
-  return RequireAuth
+  return RequireAuth;
 }

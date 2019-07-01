@@ -1,0 +1,145 @@
+@import './utils/Mixins.scss';
+
+// VIEWER ------------------------------------------
+.viewer {
+    width: 590px;
+    height: 472px;
+    border: 1px solid rgba(230, 230, 230, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.room-image-container {
+    position: absolute;
+    z-index: 1;
+    top: -37px;
+    left: -162px;
+}
+
+.room-image {
+    height: 585px;
+}
+
+// VALIDATION FORM ------------------------------------------
+.login-header {
+    font-size: 24px;
+    color: #727272;
+    font-weight: 400;
+}
+
+.login-wrapper {
+    @include flex-column-center;
+}
+
+.form-wrapper {
+    @include flex-column-center;
+
+    input {
+        width: 374px;
+        height: 48px;
+        border-radius: 6px;
+        border: 1px solid #c9c6c6;
+        font-size: 18px;
+        color: #a5a1a1;
+        padding-left: 23px;
+        outline: none;
+        margin: 17px 0 17px 0;
+
+        &.error {
+            border-color: red;
+        }
+    }
+}
+
+.validation-message {
+    color: red;
+    width: 100%;
+    margin: 0 0 20px 5px;
+    font-size: 18px;
+}
+
+.submit-button {
+    width: 397px;
+    height: 48px;
+    background-color: #1de278;
+    font-size: 18px;
+    color: #ffffff;
+    border-radius: 6px;
+
+    &:disabled {
+        background-color: #23a861;
+        cursor: progress;
+    }
+}
+
+// DOOR -----------------------------
+.door-wrapper {
+    @include flex-column-center;
+    position: relative;
+}
+
+@mixin borderColor($color) {
+    .beams {
+        border-color:  $color;
+    }
+
+    .posts {
+        border-color: $color;
+    }
+}
+
+.black-door {
+    @include borderColor(#000);
+}
+
+.gray-door {
+    @include borderColor(#797474);
+}
+
+.white-door {
+    @include borderColor(#F4F2F2);
+}
+
+.beams {
+    flex: 1 1 20px;
+    display: flex;
+    flex-direction: row;
+    border: 3.5px solid black;
+    &:not(:last-of-type) {
+        border-bottom: none;
+        .posts {
+            border-bottom: none;
+        }
+    }
+}
+.posts {
+    display: block;
+    flex: 1 1 20px;
+    border: 3.5px solid black;
+}
+
+.door-container {
+    display: flex;
+    z-index: 2;
+    position: relative;
+    height: 321px;
+}
+
+.second-door .door-wrapper {
+    margin-left: 4px;
+}
+
+.door-3d-view {
+    background-image: url('./assets/park.png');
+    background-size: cover;
+}
+
+.door-viewer {
+    width: 145px;
+    height: 321px;
+    display: flex;
+    flex-direction: column;
+}

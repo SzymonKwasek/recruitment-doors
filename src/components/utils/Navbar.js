@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Popup from 'reactjs-popup';
-import logo from '../../assets/Logo@2x.png';
 import axios from 'axios';
 import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css'
-
 import { useTranslation } from 'react-i18next';
 
+import 'react-dropdown/style.css'
+import logo from '../../assets/Logo@2x.png';
 
 const Navbar = () => {
 

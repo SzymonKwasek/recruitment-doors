@@ -15,14 +15,13 @@ const Door = ({items}) => {
         'white-door': context.doorColor === 'white'
     });
 
-
     return (
         <div className="door-wrapper">
             <div className={doorClassNames}> 
                 {items}
             </div>
-            <Ruler  vertical={false} 
-                    value={context.width}/>
+            <Ruler vertical={false} 
+                   value={context.width}/>
         </div>
     )
 }

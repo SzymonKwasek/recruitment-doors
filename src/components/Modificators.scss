@@ -1,0 +1,172 @@
+@import './utils/Mixins.scss';
+
+// WIZARD ------------------------------------------
+.progtrckr {
+    @include flex-row-between;
+    list-style: none;
+    width: 359px;
+    height: 83px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    margin-bottom: 20px;
+    font-weight: 500;
+
+    &::before {
+        content: "";
+        width: 260px;
+        height: 2px;
+        position: absolute;
+        background-color: #f1f9ff;
+        top: 21px;
+        left: 45px;
+    }
+
+    li {
+        @include flex-column-center;
+        font-size: 10px;
+        color: #848c93;
+        text-transform: uppercase;
+        position: relative;
+        top: 25px;
+    }
+    em {
+        font-style: normal;
+        &::before {
+            content: "Step ";
+        }
+    }
+}
+
+.progtrckr-doing::before {
+    @include wizard-step(46px, 46px, #95a3ad, -55px);
+}
+
+.progtrckr-doing::after {
+    @include wizard-step(6px, 6px, #ffffff, -35px);
+}
+
+.progtrckr-todo::before,
+.progtrckr-done::before {
+    @include wizard-step(46px, 46px, #cddbe5, -55px);
+}
+
+.progtrckr-todo::after,
+.progtrckr-done::after {
+    @include wizard-step(6px, 6px, #6991b2, -35px);
+}
+
+.creator-container {
+    @include flex-column-center;
+}
+
+.footer-buttons {
+    display: flex;
+    width: 270px;
+    justify-content: flex-start;
+    transform: translateX(300px) translateY(-30px);
+
+    button {
+        width: 126px;
+        height: 31px;
+        background-color: rgba(111, 145, 170, 1);
+        border: 2px solid rgba(111, 145, 170, 1);
+        font-size: 14px;
+        color: rgba(255, 255, 255, 1);
+        margin: 0 5px;
+
+        &#prev-button {
+            background-color: #ffffff;
+            color: #6f91aa;
+        }
+    }
+}
+
+.multi-step {
+    width: 100%;
+    @include flex-column-center;
+}
+
+// DROPDOWN ----------------------------------------
+.Dropdown-control {
+	width: 112px;
+	height: 32px;
+	border-radius: 3px !important;
+	border: 1px solid #909090 !important;
+    position: relative !important;
+    cursor: pointer !important;
+}
+
+.Dropdown-placeholder {
+	font-size: 14px;
+	color: #7E7E7E;
+	font-weight: 500;
+}
+
+// TOAST -----------------------------------------
+.Toastify .Toastify__toast-container {
+    width: 100%;
+    left: 0;
+    margin: 0;
+    top: 0;
+    padding: 0;
+
+    .Toastify__toast {
+        height: 80px;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+    }
+}
+
+// PROGRESS --------------------------------------
+.react-sweet-progress {
+    background-color: rgba(173, 178, 181, .8);
+    position: absolute;
+    height: 100%;
+    top: 0;
+}
+
+.react-sweet-progress-line {
+    width: 40% !important;
+    background-color: transparent !important;
+    position: relative;
+
+    &::before {
+        content: "";
+        width: 102%;
+        height: 32px;
+        border: 1px solid white;
+        border-radius: 40px;
+        display: block;
+        position: absolute;
+        top: -8px;
+        left: -5px;
+    }
+
+    &::after {
+        content: "Processing...";
+        font-size: 24px;
+        color: white;
+        position: absolute;
+        display: block;
+        width: 100%;
+        text-align: center;
+        top: -120px;
+    }
+}
+
+.react-sweet-progress-line-inner {
+    height: 18px;
+    background-color: #fff !important;
+}
+
+.react-sweet-progress-symbol {
+    padding-left: 20px !important;
+    color: white !important;
+    font-weight: 400 !important;
+}
+
+.react-sweet-progress-line-inner-status-active:before {
+    background-color: #aba0a0 !important;
+}

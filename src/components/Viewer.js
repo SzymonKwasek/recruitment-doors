@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo, useState, useEffect } from 'react';
 import AppContext from '../context/app-context';
 import classNames from 'classnames';
 import room from '../assets/room.png';
@@ -7,31 +7,38 @@ import Switch from './utils/Switch';
 import Door from './Door';
 import Ruler from './utils/Ruler';
 
-const Viewer = ({type}) => {
+const Viewer = React.memo(({type}) => {
     
     const context = useContext(AppContext);
 
-    const items = [];
-    const posts = [];
+    const [items, setItems] = useState([]);
+    const [posts, setPosts] = useState([]);
 
     const doorContainer = classNames({
         'door-container': true,
         'door-3d-view': !context.is2d
-    })
+    });
 
-    for (let i = 0; i<=context.posts; i++) {
-        posts.push(
-            <div key={i} className="posts"></div>
-        )
-    }
+    useEffect(() => {
+        const itemsTemp = Array.from(Array(context.beams + 1)).map((items, index) => {
+            return (
+                <div key={index} className="beams">
+                    {posts}
+                </div>
+            )
+        });
+        setItems(itemsTemp);
+    }, [posts])
+    
 
-    for (let i = 0; i<=context.beams; i++) {
-        items.push(
-            <div key={i} className="beams">
-                {posts}
-            </div>
-        )
-    }
+    useMemo(() => {
+        const postsTemp = Array.from(Array(context.posts + 1)).map((items, index) => {
+            return (
+                <div key={index} className="posts"></div>
+            )
+        });
+        setPosts(postsTemp);
+    }, [context.posts, context.beams]);
 
     return (
         <div className="viewer">
@@ -63,6 +70,6 @@ const Viewer = ({type}) => {
             
         </div>
     )
-}
+});
 
 export default Viewer;

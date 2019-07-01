@@ -1,0 +1,266 @@
+@import './Mixins.scss';
+
+// MODAL -------------------------------------------
+.organization-content {
+    width: 301px;
+    height: 222px;
+    background-color: #ffffff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.popup-content {
+    border: none !important;
+    padding: 0 !important;
+    width: auto !important;
+}
+
+.modal-container {
+    @include flex-column-center;
+    width: 813px;
+    height: 432px;
+    background-color: #ffffff;
+    border: 1px solid #7998b0;
+}
+
+.modal-header {
+    font-size: 24px;
+    color: #6f91aa;
+}
+
+.modal-divider {
+    width: 694px;
+    border: 1px solid #6f91aa;
+}
+
+.type-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.type {
+    @include flex-column-center;
+}
+
+.type-name {
+    font-size: 18px;
+    color: #6f91aa;
+    margin: 15px 0 15px 0;
+}
+
+.type-image {
+    width: 187px;
+    height: 229px;
+    background-color: #d8d8d8;
+}
+
+// UTILS -------------------------------------------
+
+.divider {
+    width: 153px;
+    border: 1px solid rgba(247, 247, 247, 1);
+    margin-left: 0;
+}
+
+.input-wrapper {
+    @include flex-row-between;
+
+    input {
+        width: 40px;
+        padding-left: 4px;
+        height: 24px;
+        margin-right: 5px;
+    }
+}
+
+
+// CHECKBOX ---------------------------------------
+.checkbox {
+    display: none;
+}
+
+.checkbox-container {
+    margin-bottom: 30px;
+    align-self: flex-start;
+}
+
+.checkbox-replacer {
+    position: relative;
+    left: 33px;
+    top: 5px;
+    padding: 0 15px;
+    font-size: 16px;
+    color: #A5A1A1;
+    user-select: none;
+    cursor: pointer;
+}
+
+.checkbox-replacer::before {
+    content: "";
+    width: 28px;
+    height: 25px;
+    border: 1px solid #A5A1A1;
+    display: block;
+    position: absolute;
+    left: -30px;
+    top: -3px;
+}
+
+.checked.checkbox-replacer::after {
+    content: "";
+    width: 22px;
+    height: 19px;
+    background-color: #909090;
+    display: block;
+    position: absolute;
+    left: -26px;
+    top: 1px;
+    border-radius: 2px;
+}
+
+// SWITCH -----------------------------------------
+.switch {
+    display: flex;
+    position: absolute;
+    right: 35px;
+    top: 20px;
+    z-index: 2;
+
+    label:first-of-type {
+        border-right: none;
+    }
+}
+
+.switch-button {
+    display: none;
+}
+
+.switch-button-replacer {
+    @include flex-row-center;
+    width: 32px;
+    height: 23px;
+    border: 2px solid #6F91AA;
+    font-size: 14px;
+    color: #6F91AA;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #CBCBCB;
+}
+
+.switched {
+    background-color: white;
+}
+
+
+// RULER ----------------------------
+.ruler-container-vertical {
+    height: 98%;
+}
+
+.ruler-container-horizontal {
+    position: relative;
+    width: 98%;
+}
+
+.ruler-horizontal {
+    width: 100%;
+    height: 0;
+    border: 1px solid #707070;
+    position: absolute;
+    bottom: -20px;
+
+    &:before {
+        content: '';
+        height: 14px;
+        border: 1px solid #707070;
+        position: absolute;
+        left: -1px;
+        top: -8px;
+    }
+
+    &:after {
+        content: '';
+        height: 14px;
+        border: 1px solid #707070;
+        position: absolute;
+        right: -1px;
+        top: -8px
+    }
+}
+
+.ruler-vertical {
+    height: 100%;
+    border: 1px solid #707070;
+    position: absolute;
+    left: -20px;
+
+    &:before {
+        content: '';
+        width: 14px;
+        border: 1px solid #707070;
+        position: absolute;
+        left: -8px;
+        top: -1px;
+    }
+
+    &:after {
+        content: '';
+        width: 14px;
+        border: 1px solid #707070;
+        position: absolute;
+        right: -8px;
+        bottom: -1px;
+    }
+}
+
+.dimension-display-vertical {
+    @include dimension-display;
+    top: calc(50% - 5px);
+    left: -39px;
+}
+
+.dimension-display-horizontal {
+    @include dimension-display;
+    top: 10px;
+    left: calc(50% - 17px);
+}
+
+.ruler-top {
+    width: 100%;
+    position: absolute;
+    top: -35px;
+}
+
+// NAVBAR ------------------------------------------
+.navbar {
+    @include flex-row-between;
+    height: 80px;
+    width: 100%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    margin-bottom: 20px;
+}
+
+.navbar-right {
+	@include flex-row-between;
+	margin-right: 70px;
+	width: 375px;
+}
+
+.dropdown-label {
+	font-size: 14px;
+}
+
+.logo {
+    width: 47px;
+    margin-left: 107px;
+}
+
+.organization-button {
+    width: 118px;
+    height: 32px;
+    background-color: #77779d;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #ffffff;
+}
